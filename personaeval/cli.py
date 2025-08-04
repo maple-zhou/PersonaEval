@@ -11,9 +11,18 @@ from rich.table import Table
 from .config import Config
 from .evaluator import Evaluator
 from .metrics import MetricsCalculator
+from .dataset_prepare import ensure_dataset_ready
 
 
 console = Console()
+
+
+def _ensure_dataset_before_command():
+    """Ensure dataset is ready before executing any command."""
+    if not ensure_dataset_ready():
+        console.print("[red]Error: Failed to prepare required dataset files.[/red]")
+        console.print("[yellow]Please check your network connection and try again.[/yellow]")
+        sys.exit(1)
 
 
 @click.group()
@@ -39,6 +48,9 @@ def main():
 def run(config_path: str, track_name: str, model_name: str, 
         no_resume: bool, list_tracks: bool, list_models: bool):
     """Run evaluation experiments."""
+    
+    # Ensure dataset is ready before running experiments
+    _ensure_dataset_before_command()
     
     try:
         # Load configuration
@@ -96,6 +108,9 @@ def run(config_path: str, track_name: str, model_name: str,
 def analyze(result_file: str):
     """Analyze experiment results."""
     
+    # Ensure dataset is ready for analysis
+    _ensure_dataset_before_command()
+    
     try:
         import pandas as pd
         from .utils import calculate_statistics
@@ -144,7 +159,10 @@ def analyze(result_file: str):
 @click.option('--plot', is_flag=True, help='Generate comparison plots')
 @click.option('--plot-output', default='metrics_comparison.png', help='Plot output file path')
 def metrics(results_dir: str, model_names: str, tracks: str, output: str, plot: bool, plot_output: str):
-    """Calculate evaluation metrics for experiment results."""
+    """Calculate and compare metrics across experiments."""
+    
+    # Ensure dataset is ready for metrics calculation
+    _ensure_dataset_before_command()
     
     try:
         # Parse track names
