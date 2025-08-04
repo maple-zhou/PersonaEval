@@ -93,7 +93,7 @@ class Evaluator:
             TimeRemainingColumn(),
             console=self.console
         ) as progress:
-            task = progress.add_task(f"Evaluating {len(res_df)} samples...", total=len(res_df))
+            task = progress.add_task(f"Evaluating {len(res_df)} samples on {track_name} with {model_name}...", total=len(res_df))
             
             # Start save thread
             save_thread = threading.Thread(
@@ -109,7 +109,7 @@ class Evaluator:
                     futures = []
                     
                     for idx, row in res_df.iterrows():
-                        if pd.notna(row.get('success')) and pd.notna(row.get('res')) and pd.notna(row.get('response')) and pd.notna(row.get('prob1')) and pd.notna(row.get('prob2')) and pd.notna(row.get('prob3')) and pd.notna(row.get('prob4')):
+                        if pd.notna(row.get('gt')) and pd.notna(row.get('success')) and pd.notna(row.get('res')) and pd.notna(row.get('response')) and pd.notna(row.get('prob1')) and pd.notna(row.get('prob2')) and pd.notna(row.get('prob3')) and pd.notna(row.get('prob4')):
                             progress.advance(task)
                             continue
                         
