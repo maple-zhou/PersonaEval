@@ -1,5 +1,9 @@
 # PersonaEval
 
+[![Paper](https://img.shields.io/badge/Paper-arXiv-red.svg)](https://github.com/maple-zhou/PersonaEval)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-blue.svg)](https://huggingface.co/datasets/lingfengzhou/PersonaEval)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 This is the official codebase for the paper **PersonaEval: Are LLM Evaluators Human Enough to Judge Role-Play?**.
 
 ## Installation
@@ -17,6 +21,20 @@ uv sync
 ```
 
 ## Usage
+
+### Step 0: Dataset Preparation
+
+**The evaluation datasets will be automatically downloaded when you run any command.** The system will:
+
+1. Check if required data files exist in the `data/` directory
+2. If files are missing, automatically download them from [Hugging Face Hub](https://huggingface.co/datasets/lingfengzhou/PersonaEval)
+3. Required files: `Literary.csv`, `Drama.csv`, `Expertise.csv`
+
+You can also manually prepare the dataset by running:
+
+```bash
+python -c "from personaeval.dataset_prepare import ensure_dataset_ready; ensure_dataset_ready()"
+```
 
 ### Step 1: Configuration Setup
 
@@ -156,11 +174,12 @@ personaeval/
 │   ├── models.py           # Model definitions and API calls
 │   ├── evaluator.py        # Main evaluation logic
 │   ├── metrics.py          # Metrics calculation
+│   ├── dataset_prepare.py  # Dataset preparation utilities
 │   └── utils.py            # Utility functions
 ├── configs/
 │   ├── default.yaml        # Main configuration
 │   └── default.yaml.example # Example configuration
-├── data/                   # Evaluation datasets
+├── data/                   # Evaluation datasets (auto-downloaded)
 ├── results/                # Experiment results
 ├── pyproject.toml
 └── README.md
@@ -181,4 +200,4 @@ If you find this code useful, please cite our paper:
 
 ## License
 
-MIT License 
+MIT
