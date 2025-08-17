@@ -1,6 +1,6 @@
 # PersonaEval
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-red.svg)](https://github.com/maple-zhou/PersonaEval)
+[![Paper](https://img.shields.io/badge/Paper-arXiv-red.svg)](https://arxiv.org/abs/2508.10014)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-blue.svg)](https://huggingface.co/datasets/lingfengzhou/PersonaEval)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -197,6 +197,12 @@ If you find this code useful, please cite our paper:
   year={2024}
 }
 ``` -->
+@inproceedings{zhou2025personaeval,
+  title={PersonaEval: Are LLM Evaluators Human Enough to Judge Role-Play?},
+  author={Zhou, Lingfeng and Zhang, Jialing and Gao, Jin and Jiang, Mohan and Wang, Dequan},
+  booktitle={Conference on Language Modeling (COLM)},
+  year={2025}
+}
 
 ## License
 
