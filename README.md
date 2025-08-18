@@ -198,11 +198,14 @@ If you find this code useful, please cite our paper:
 }
 ``` -->
 ```bibtex
-@inproceedings{zhou2025personaeval,
+@article{zhou2025personaeval,
   title={PersonaEval: Are LLM Evaluators Human Enough to Judge Role-Play?},
   author={Zhou, Lingfeng and Zhang, Jialing and Gao, Jin and Jiang, Mohan and Wang, Dequan},
-  booktitle={Conference on Language Modeling (COLM)},
+  journal={arXiv preprint arXiv:2508.10014},
   year={2025}
+}
+
+解释ear={2025}
 }
 ```
 
