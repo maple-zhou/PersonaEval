@@ -204,9 +204,6 @@ If you find this code useful, please cite our paper:
   journal={arXiv preprint arXiv:2508.10014},
   year={2025}
 }
-
-解释ear={2025}
-}
 ```
 
 ## License
